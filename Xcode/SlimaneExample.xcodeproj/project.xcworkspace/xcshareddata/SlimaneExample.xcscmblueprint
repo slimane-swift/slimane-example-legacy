@@ -1,0 +1,93 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1808E82C67D7AA18075968579660B50DF9A3A02C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8E0D4C95050A313F64EB00D127485BAC5DFE9CBB" : 0,
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : 0,
+    "3F46238ADAD11DA3B7DDDBB74DD15566970E7D15" : 0,
+    "57932305D7AF3390B1D4C8A3D4D1FCFFE771843F" : 0,
+    "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : 0,
+    "D2645895BE86F596C92A5059EF3018F63D63400C" : 0,
+    "D4199CF4A45E212E54A4CEE7E34326E0BC446862" : 0,
+    "C8BCB70E5BA9B013E246CB2F9844FEB774381333" : 0,
+    "1808E82C67D7AA18075968579660B50DF9A3A02C" : 0,
+    "4063023BC399A0B5BB8950E540A280F9A35320CD" : 0,
+    "1E341D92E29B00380C7F10E3866962C9D13CE7F8" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9F254D11-5EE5-426E-B330-26F512D1AAB5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8E0D4C95050A313F64EB00D127485BAC5DFE9CBB" : "SlimaneExample\/Mustache\/",
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : "SlimaneExample\/Slimane\/SlimaneHTTP\/Suv\/Quick\/",
+    "3F46238ADAD11DA3B7DDDBB74DD15566970E7D15" : "SlimaneExample\/slimane\/SlimaneHTTP\/Suv\/",
+    "57932305D7AF3390B1D4C8A3D4D1FCFFE771843F" : "SlimaneExample\/slimane\/SlimaneHTTP\/HTTPParser\/",
+    "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : "SlimaneExample\/Stencil\/",
+    "D2645895BE86F596C92A5059EF3018F63D63400C" : "Slimane\/",
+    "D4199CF4A45E212E54A4CEE7E34326E0BC446862" : "SlimaneExample\/slimane\/SlimaneHTTP\/HTTPParser\/HTTP\/",
+    "C8BCB70E5BA9B013E246CB2F9844FEB774381333" : "SlimaneExample\/slimane\/SlimaneHTTP\/",
+    "1808E82C67D7AA18075968579660B50DF9A3A02C" : "slimane-example\/",
+    "4063023BC399A0B5BB8950E540A280F9A35320CD" : "SlimaneExample\/",
+    "1E341D92E29B00380C7F10E3866962C9D13CE7F8" : "SlimaneExample\/slimane\/SlimaneHTTP\/HTTPParser\/HTTP\/Core\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SlimaneExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Xcode\/SlimaneExample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:noppoMan\/slimane-example.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1808E82C67D7AA18075968579660B50DF9A3A02C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zewo\/Core",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1E341D92E29B00380C7F10E3866962C9D13CE7F8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kylef\/Stencil.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3DA8097D366B6AFDAEA91946C35253AA1EBC780B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/noppoMan\/Suv.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F46238ADAD11DA3B7DDDBB74DD15566970E7D15"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:noppoMan\/slimane-example.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4063023BC399A0B5BB8950E540A280F9A35320CD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zewo\/HTTPParser.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "57932305D7AF3390B1D4C8A3D4D1FCFFE771843F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zewo\/Mustache.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8E0D4C95050A313F64EB00D127485BAC5DFE9CBB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/noppoMan\/SlimaneHTTP.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8BCB70E5BA9B013E246CB2F9844FEB774381333"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Quick\/Quick.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:noppoMan\/slimane.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D2645895BE86F596C92A5059EF3018F63D63400C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zewo\/HTTP",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D4199CF4A45E212E54A4CEE7E34326E0BC446862"
+    }
+  ]
+}
