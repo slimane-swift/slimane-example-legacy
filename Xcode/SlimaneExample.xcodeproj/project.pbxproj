@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B613CC6A1C6C71F700BD69AC /* userRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613CC691C6C71F700BD69AC /* userRoute.swift */; };
-		B66D0D201C6C72FF006B304D /* cluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D0D1F1C6C72FF006B304D /* cluster.swift */; };
 		B66D0D241C6C7499006B304D /* BasicAuthenticationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D0D231C6C7499006B304D /* BasicAuthenticationMiddleware.swift */; };
 		B67168D31C6C670500CCE188 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67168AE1C6C66F500CCE188 /* Common.swift */; };
 		B67168D41C6C670500CCE188 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67168B01C6C66F500CCE188 /* Expression.swift */; };
@@ -77,7 +76,6 @@
 		B613CC681C6C718B00BD69AC /* index.mustache */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.mustache; sourceTree = "<group>"; };
 		B613CC691C6C71F700BD69AC /* userRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userRoute.swift; sourceTree = "<group>"; };
 		B6235BC81C6A418700A8B9DE /* SlimaneExample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SlimaneExample; sourceTree = BUILT_PRODUCTS_DIR; };
-		B66D0D1F1C6C72FF006B304D /* cluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cluster.swift; sourceTree = "<group>"; };
 		B66D0D231C6C7499006B304D /* BasicAuthenticationMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAuthenticationMiddleware.swift; sourceTree = "<group>"; };
 		B67168A71C6C66F500CCE188 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B67168A81C6C66F500CCE188 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				B692ED2F1C6A59090037FEA3 /* main.swift */,
 				B6D5AA711C6A62FE0023672F /* Response+MustacheRender.swift */,
 				B613CC691C6C71F700BD69AC /* userRoute.swift */,
-				B66D0D1F1C6C72FF006B304D /* cluster.swift */,
 				B66D0D231C6C7499006B304D /* BasicAuthenticationMiddleware.swift */,
 			);
 			name = Sources;
@@ -429,7 +426,6 @@
 				B67168E51C6C670500CCE188 /* ExpressionParser.swift in Sources */,
 				B67168E61C6C670500CCE188 /* TemplateParser.swift in Sources */,
 				B67168E71C6C670500CCE188 /* TemplateToken.swift in Sources */,
-				B66D0D201C6C72FF006B304D /* cluster.swift in Sources */,
 				B67168E81C6C670500CCE188 /* Box.swift in Sources */,
 				B67168E91C6C670500CCE188 /* Context.swift in Sources */,
 				B67168EA1C6C670500CCE188 /* CoreFunctions.swift in Sources */,

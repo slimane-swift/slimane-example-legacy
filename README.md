@@ -5,9 +5,16 @@
 [See Slimane Install Guide](https://github.com/noppoMan/Slimane/blob/develop/docs/install_guide.md)
 
 ## How to build and run
+The make file is being made
+
 ```swift
 swift build
+
+// Launch Single app
 ./build/[env]SlimaneExample
+
+// Launch Cluster app
+./build/[env]SlimaneExample --cluster
 ```
 
 ## License

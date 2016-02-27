@@ -6,8 +6,28 @@
 //  Copyright © 2016 MikeTOKYO. All rights reserved.
 //
 
-// for single thread app
-//launchApplication()
+import Suv
+import Slimane
 
-// for clusterd app
-launchClusterApp()
+if Process.arguments.count > 1 {
+    let mode = Process.arguments[1]
+    
+    if mode == "--cluster" {
+        // For Cluster app
+        if Cluster.isMaster {
+            let cluster = Cluster(Array(Process.arguments[1..<Process.arguments.count]))
+            
+            for _ in 0..<OS.cpuCount {
+                try! cluster.fork(silent: false)
+            }
+            
+            try! Slimane().listen(port: 3000)
+        } else {
+            launchApplication()
+        }
+    }
+    
+} else {
+    // for single thread app
+    launchApplication()
+}
