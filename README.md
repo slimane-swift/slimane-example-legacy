@@ -2,19 +2,17 @@
 
 
 ## Instalation
-[See Slimane Install Guide](https://github.com/noppoMan/Slimane/blob/develop/docs/install_guide.md)
+Check out the [Slimane Documentation](https://github.com/noppoMan/Slimane/wiki) to start.
 
 ## How to build and run
-The make file is being made
-
 ```swift
-swift build
+make
 
 // Launch Single app
-./build/[env]SlimaneExample
+./build/release/SlimaneExample
 
 // Launch Cluster app
-./build/[env]SlimaneExample --cluster
+./build/release/SlimaneExample --cluster
 ```
 
 ## License
