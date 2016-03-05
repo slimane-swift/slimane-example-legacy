@@ -553,7 +553,7 @@
 				B6235BCE1C6A418700A8B9DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B6235BCF1C6A418700A8B9DE /* Build configuration list for PBXNativeTarget "SlimaneExample" */ = {
 			isa = XCConfigurationList;
@@ -562,7 +562,7 @@
 				B6235BD11C6A418700A8B9DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

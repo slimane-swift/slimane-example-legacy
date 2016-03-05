@@ -8,6 +8,7 @@
 
 import Suv
 import Slimane
+import SlimaneHTTP
 
 if Process.arguments.count > 1 {
     let mode = Process.arguments[1]
@@ -25,6 +26,20 @@ if Process.arguments.count > 1 {
         } else {
             launchApplication()
         }
+    }
+
+    else if mode == "--no-slimane" {
+        let server = SlimaneHTTP.createServer { result in
+            if case .Success(let req, let res) = result {
+                res.write("hello")
+            }
+        }
+        
+        try! server.bind(Address(host: "0.0.0.0", port: 3000))
+        
+        try! server.listen()
+        
+        Loop.defaultLoop.run()
     }
     
 } else {

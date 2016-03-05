@@ -21,27 +21,27 @@ func launchApplication(){
     
     app.use(CookieParser(secret: "secret"))
     
-    // session
-    app.use(SessionHandler(
-        SessionConfig(
-            secret: "secret",
-            expires: Time(tz: .UTC).addDay(7).rfc822
-        )
-    ))
-    
+    // Enable Basic authentication
+    //app.use(BasicAuthenticationMiddleware())
+
     // Static File Responder
     app.use(StaticFileServe("\(Process.cwd)/public"))
     
-    // Enable Basic authentication
-    //app.use(BasicAuthenticationMiddleware())
-    
-    // handy middleware
-    app.use { req, res, next in
-        if let session = req.session {
-            session["current_time"] = Time().string
-        }
-        next(nil)
-    }
+//    // Enable session
+//    app.use(SessionHandler(
+//        SessionConfig(
+//            secret: "secret",
+//            expires: Time(tz: .UTC).addDay(7).rfc822
+//        )
+//    ))
+//
+//    // handy middleware for session
+//    app.use { req, res, next in
+//        if let session = req.session {
+//            session["current_time"] = Time().string
+//        }
+//        next(nil)
+//    }
     
     if env == "development" {
         app.use { req, res, next in
