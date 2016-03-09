@@ -19,7 +19,7 @@ extension HTTPResponse {
     public func renderError(status: Status = .BadRequest, error: ErrorType){
         self.status(status)
         Logger.fatal(error)
-        self.write("Something went wrong")
+        self.write("\(error)")
     }
     
     public func render(path: String, viewPath: String = "views", fileExtension: String = "mustache", templateData: TemplateData) {
@@ -27,7 +27,9 @@ extension HTTPResponse {
         
         let absViewPath = "\(Process.cwd)/\(viewPath)"
         
-        Fs.readFile("\(absViewPath)/\(path).\(fileExtension)") {[unowned self] result in
+        print("\(absViewPath)/\(path).\(fileExtension)")
+        
+        FS.readFile("\(absViewPath)/\(path).\(fileExtension)") {[unowned self] result in
             if case .Error(let err) = result {
                 return self.renderError(error: err)
             }

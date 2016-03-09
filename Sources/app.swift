@@ -23,25 +23,25 @@ func launchApplication(){
     
     // Enable Basic authentication
     //app.use(BasicAuthenticationMiddleware())
-
+    
     // Static File Responder
     app.use(StaticFileServe("\(Process.cwd)/public"))
     
-//    // Enable session
-//    app.use(SessionHandler(
-//        SessionConfig(
-//            secret: "secret",
-//            expires: Time(tz: .UTC).addDay(7).rfc822
-//        )
-//    ))
-//
-//    // handy middleware for session
-//    app.use { req, res, next in
-//        if let session = req.session {
-//            session["current_time"] = Time().string
-//        }
-//        next(nil)
-//    }
+        // Enable session
+        app.use(SessionHandler(
+            SessionConfig(
+                secret: "secret",
+                expires: Time(tz: .UTC).addDay(7).rfc822
+            )
+        ))
+    
+        // handy middleware for session
+        app.use { req, res, next in
+            if let session = req.session {
+                session["current_time"] = Time().string
+            }
+            next(nil)
+        }
     
     if env == "development" {
         app.use { req, res, next in
@@ -54,7 +54,7 @@ func launchApplication(){
     app.get("/") { req, res in
         res.write("Welcome to Slimane!")
     }
-
+    
     // RouteType handler
     app.get("/users/:id", UserGetRoute())
     app.post("/users", UserCreateRoute())
@@ -69,7 +69,7 @@ func launchApplication(){
             res.write("Hi, I'm a pid: \(Process.pid), worker-id: \(Process.env["SUV_WORKER_ID"]!)")
         }
     }
-
+    
     var port: Int {
         guard let port = Process.env["PORT"] else {
             return 3000
