@@ -40,6 +40,7 @@
 		B67168EF1C6C670500CCE188 /* TemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67168D21C6C66F500CCE188 /* TemplateRepository.swift */; };
 		B692ED2E1C6A58820037FEA3 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = B692ED2D1C6A58820037FEA3 /* app.swift */; };
 		B692ED301C6A59090037FEA3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B692ED2F1C6A59090037FEA3 /* main.swift */; };
+		B699A4E11C908DC800F656C5 /* slimane_logo.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = B699A4E01C908D7900F656C5 /* slimane_logo.jpg */; };
 		B6D5AA721C6A62FE0023672F /* Response+MustacheRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5AA711C6A62FE0023672F /* Response+MustacheRender.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,9 +65,10 @@
 		B6235BC61C6A418700A8B9DE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
+				B699A4E11C908DC800F656C5 /* slimane_logo.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -112,6 +114,7 @@
 		B67168D21C6C66F500CCE188 /* TemplateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRepository.swift; sourceTree = "<group>"; };
 		B692ED2D1C6A58820037FEA3 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
 		B692ED2F1C6A59090037FEA3 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B699A4E01C908D7900F656C5 /* slimane_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slimane_logo.jpg; sourceTree = "<group>"; };
 		B699E8A01C79863B000C846E /* Slimane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Slimane.xcodeproj; path = ../Slimane/Xcode/Slimane.xcodeproj; sourceTree = "<group>"; };
 		B6D5AA711C6A62FE0023672F /* Response+MustacheRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+MustacheRender.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +133,7 @@
 		B613CC661C6C718B00BD69AC /* public */ = {
 			isa = PBXGroup;
 			children = (
+				B699A4E01C908D7900F656C5 /* slimane_logo.jpg */,
 			);
 			name = public;
 			path = ../public;
