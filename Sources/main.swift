@@ -6,42 +6,46 @@
 //  Copyright © 2016 MikeTOKYO. All rights reserved.
 //
 
-import Suv
 import Slimane
-import SlimaneHTTP
 
 if Process.arguments.count > 1 {
     let mode = Process.arguments[1]
-    
+
     if mode == "--cluster" {
+        
+        func observeWorker(worker: inout Worker){
+            worker.send(.Message("message from master"))
+            
+            worker.on { event in
+                if case .Message(let str) = event {
+                    print(str)
+                }
+                    
+                else if case .Online = event {
+                    print("Worker: \(worker.id) is online")
+                }
+                    
+                else if case .Exit(let status) = event {
+                    print("Worker: \(worker.id) is dead. status: \(status)")
+                    worker = try! Cluster.fork(silent: false)
+                    observeWorker(&worker)
+                }
+            }
+        }
+        
         // For Cluster app
         if Cluster.isMaster {
-            let cluster = Cluster(Array(Process.arguments[1..<Process.arguments.count]))
-            
+            print("Cluster mode ready...")
             for _ in 0..<OS.cpuCount {
-                try! cluster.fork(silent: false)
+                var worker = try! Cluster.fork(silent: false)
+                observeWorker(&worker)
             }
-            
-            try! Slimane().listen(port: 3000)
+        
+            try! Slimane().listen()
         } else {
             launchApplication()
         }
     }
-
-    else if mode == "--no-slimane" {
-        let server = SlimaneHTTP.createServer { result in
-            if case .Success(let req, let res) = result {
-                res.write("hello")
-            }
-        }
-        
-        try! server.bind(Address(host: "0.0.0.0", port: 3000))
-        
-        try! server.listen()
-        
-        Loop.defaultLoop.run()
-    }
-    
 } else {
     // for single thread app
     launchApplication()

@@ -1,6 +1,0 @@
-[submodule "Slimane"]
-	path = Slimane
-	url = git@github.com:noppoMan/Slimane.git
-[submodule "Mustache"]
-	path = Mustache
-	url = https://github.com/Zewo/Mustache.git
