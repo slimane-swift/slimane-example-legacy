@@ -14,12 +14,12 @@ import MustacheViewEngine
 
 func launchApplication(){
     let env = Process.env["SLIMANE_ENV"] ?? "development"
-    
+
     let app = Slimane()
-    
+
     // HTTP body parser
     app.use(BodyParser())
-    
+
     // Enable session
     let sessConfig = SessionConfig(
         secret: "my-secret-key",
@@ -29,25 +29,25 @@ func launchApplication(){
 
     // Static file serving
     app.use(Slimane.Static(root: Process.cwd + "/public"))
-    
+
     if env == "development" {
         app.use(AccessLogMiddleware())
     }
-    
+
     // store data into the session
     app.use { req, res, next in
         var req = req
-        req.session?["current_time"] = "\(Time())"
+        req.session?["current_time"] = Time()
         next(.Chain(req, res))
     }
-    
+
     // Index
     app.get("/") { req, responder in
         responder {
             Response(body: "Welcome Slimane!")
         }
     }
-    
+
     // html render with MustacheViewEngine
     app.get("/render") { req, responder in
         responder {
@@ -55,14 +55,14 @@ func launchApplication(){
             return Response(custome: render)
         }
     }
-    
+
     // routing with parameters
     app.get("/users/:id") { req, responder in
         responder {
             Response(body: "User id is \(req.params["id"]!)")
         }
     }
-    
+
     // form data
     app.post("/form_data") { req, responder in
         guard let formData = req.formData else {
@@ -70,12 +70,12 @@ func launchApplication(){
                 Response(status: .badRequest)
             }
         }
-        
+
         responder {
             Response(body: "\(formData)")
         }
     }
-    
+
     // json
     app.post("/json") { req, responder in
         guard let json = req.json else {
@@ -83,12 +83,12 @@ func launchApplication(){
                 Response(status: .badRequest)
             }
         }
-        
+
         responder {
             Response(body: "\(json)")
         }
     }
-    
+
     // for making sure the worker round robin on cluster mode.
     if Cluster.isWorker {
         app.get("/cluster_test") { req, responder in
@@ -120,7 +120,7 @@ func launchApplication(){
         // Sending message to master process
         Process.send(.Message(text))
     }
-    
+
     // Bind address, port and listen http server
     try! app.listen()
 }
