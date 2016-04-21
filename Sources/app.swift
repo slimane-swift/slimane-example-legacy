@@ -12,20 +12,36 @@ import BodyParser
 import Render
 import MustacheViewEngine
 
+func sessionConfig() -> SessionConfig {
+    let storeSetting = Process.env["SESSION_STORE"] ?? "memory"
+    let store: SessionStoreType
+
+    if storeSetting.lowercased() == "redis" {
+        store = try! RedisStore(loop: Loop.defaultLoop, host: "127.0.0.1", port: 6379)
+    } else {
+      store = SessionMemoryStore()
+    }
+
+    return SessionConfig(
+        secret: "my-secret-key",
+        expires: 3600, // 1h
+        store: store
+    )
+}
+
 func launchApplication(){
     let env = Process.env["SLIMANE_ENV"] ?? "development"
 
     let app = Slimane()
 
+    app.use { req, res, next in
+        next(.Chain(req, res))
+    }
+
     // HTTP body parser
     app.use(BodyParser())
 
-    // Enable session
-    let sessConfig = SessionConfig(
-        secret: "my-secret-key",
-        expires: 3600 // 1h
-    )
-    app.use(SessionMiddleware(conf: sessConfig))
+    app.use(SessionMiddleware(conf: sessionConfig()))
 
     // Static file serving
     app.use(Slimane.Static(root: Process.cwd + "/public"))
