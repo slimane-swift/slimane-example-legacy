@@ -13,7 +13,7 @@ if Process.arguments.count > 1 {
 
     if mode == "--cluster" {
         
-        func observeWorker(worker: inout Worker){
+        func observeWorker(_ worker: inout Worker){
             worker.send(.Message("message from master"))
             
             worker.on { event in
