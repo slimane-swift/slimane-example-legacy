@@ -11,6 +11,24 @@ import SessionRedisStore
 import BodyParser
 import Render
 import MustacheViewEngine
+import WS
+
+let env = Process.env["SLIMANE_ENV"] ?? "development"
+
+var port: Int {
+    guard let port = Process.env["PORT"] else {
+        return 3000
+    }
+    
+    return Int(port)!
+}
+
+var host: String {
+    if let host = Process.env["BIND"] {
+        return host
+    }
+    return "0.0.0.0"
+}
 
 func sessionConfig() -> SessionConfig {
     let storeSetting = Process.env["SESSION_STORE"] ?? "memory"
@@ -30,8 +48,6 @@ func sessionConfig() -> SessionConfig {
 }
 
 func launchApplication(){
-    let env = Process.env["SLIMANE_ENV"] ?? "development"
-
     let app = Slimane()
 
     app.use { req, res, next in
@@ -113,21 +129,19 @@ func launchApplication(){
             }
         }
     }
-
-     var port: Int {
-         guard let port = Process.env["PORT"] else {
-             return 3000
-         }
-
-         return Int(port)!
-     }
-
-     var host: String {
-         if let host = Process.env["BIND_HOST"] {
-             return host
-         }
-         return "0.0.0.0"
-     }
+    
+    // html render with MustacheViewEngine
+    app.get("/chat", handler: ChatRoute.index)
+    
+    app.any { req, res, stream in
+        switch req.uri.path! {
+        case "/wschat":
+            ChatRoute.websocketHandler(req: req, res: res, stream: stream)
+        default:
+            var res = app.errorHandler(Error.RouteNotFound(path: req.uri.path ?? "/"))
+            try! stream.send((res.description+"\r\n").data + res.body.becomeBuffer())
+        }
+    }
 
     let text = "Listening slimane http server at \(host):\(port)"
     if Cluster.isMaster {
@@ -138,5 +152,5 @@ func launchApplication(){
     }
 
     // Bind address, port and listen http server
-    try! app.listen()
+    try! app.listen(host: host, port: port)
 }
