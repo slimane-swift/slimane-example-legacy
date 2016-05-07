@@ -68,7 +68,7 @@ func launchApplication(){
     app.get("/render") { req, responder in
         responder {
             let render = Render(engine: MustacheViewEngine(templateData: ["name": "Slimane", "date": "\(Time())"]), path: "index")
-            return Response(custome: render)
+            return Response(custom: render)
         }
     }
 
