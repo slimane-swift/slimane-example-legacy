@@ -9,10 +9,10 @@ Check out the [Slimane Documentation](https://github.com/noppoMan/Slimane/wiki) 
 make
 
 // Launch Single app
-./build/release/SlimaneExample
+.build/release/SlimaneExample
 
 // Launch Cluster app
-./build/release/SlimaneExample --cluster
+.build/release/SlimaneExample --cluster
 ```
 
 ## License
