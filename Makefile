@@ -25,5 +25,8 @@ debug:
 release:
 	$(SWIFT) build -v $(BUILDOPTS) --configuration=release
 
+clean:
+	rm -rf ./Packages .build
+
 test:
 	$(SWIFT) test
