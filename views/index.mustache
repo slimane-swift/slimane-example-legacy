@@ -2,9 +2,30 @@
     <html lang="ja">
     <head>
         <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+        <script>
+          function load() {
+            // Here is important to get templateData from Swift
+            var data = @__js_templates_view_engine_temlate_data__;
+
+
+            var template = $('#template').html();
+            Mustache.parse(template);
+            var rendered = Mustache.render(template, data);
+            $('#target').html(rendered);
+          }
+
+          $(document).ready(function(){
+            load();
+          });
+
+        </script>
     </head>
     <body>
+      <div id="target">Loading...</div>
+      <script id="template" type="x-tmpl-mustache">
         <p>Welcome to {{ name }} !</p>
-        <p>Today is {{ date }}</p>
+      </script>
     </body>
 </html>

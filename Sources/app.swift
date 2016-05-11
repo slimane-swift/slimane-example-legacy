@@ -10,7 +10,7 @@ import Slimane
 import SessionRedisStore
 import BodyParser
 import Render
-import MustacheViewEngine
+import JSTemplatesViewEngine
 import WS
 
 let env = Process.env["SLIMANE_ENV"] ?? "development"
@@ -83,7 +83,7 @@ func launchApplication(){
     // html render with MustacheViewEngine
     app.get("/render") { req, responder in
         responder {
-            let render = Render(engine: MustacheViewEngine(templateData: ["name": "Slimane", "date": "\(Time())"]), path: "index")
+            let render = Render(engine: JSTemplatesViewEngine(templateData: ["name": "Slimane", "date": "\(Time())" as AnyObject]), path: "index.mustache")
             return Response(custom: render)
         }
     }
@@ -150,6 +150,8 @@ func launchApplication(){
         // Sending message to master process
         Process.send(.Message(text))
     }
+    
+    app.keepAliveTimeout = 1
 
     // Bind address, port and listen http server
     try! app.listen(host: host, port: port)
