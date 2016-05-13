@@ -3,7 +3,7 @@
 Example project for the Slimane that has Chat, Cluster, Session etc...
 
 
-## Instalation
+## installation
 Check out the [Slimane Documentation](https://github.com/noppoMan/Slimane/wiki) to start.
 
 ## How to build and run
