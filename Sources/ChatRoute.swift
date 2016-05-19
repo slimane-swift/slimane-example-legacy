@@ -8,7 +8,7 @@
 
 import Slimane
 import Render
-import JSTemplatesViewEngine
+import MustacheViewEngine
 import WS
 
 private var sockets = [WebSocket]()
@@ -46,9 +46,9 @@ extension WebSocket {
 }
 
 struct ChatRoute {
-    static func index(to: Request, responder: (Void throws -> Response) -> Void){
+    static func index(to: Request, responder: ((Void) throws -> Response) -> Void){
         responder {
-            let render = Render(engine: JSTemplatesViewEngine(templateData: ["host": host as AnyObject, "port": "\(port)" as AnyObject]), path: "chat.mustache")
+            let render = Render(engine: MustacheViewEngine(templateData: ["host": host, "port": "\(port)"]), path: "chat")
             return Response(custom: render)
         }
     }

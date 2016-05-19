@@ -10,8 +10,11 @@ import Slimane
 import SessionRedisStore
 import BodyParser
 import Render
-import JSTemplatesViewEngine
+import MustacheViewEngine
 import WS
+import QWFuture
+import Thrush
+import Hanger
 
 let env = Process.env["SLIMANE_ENV"] ?? "development"
 
@@ -80,10 +83,10 @@ func launchApplication(){
         }
     }
 
-    // html render with MustacheViewEngine
+    // html render with JSTemplatesViewEngine
     app.get("/render") { req, responder in
         responder {
-            let render = Render(engine: JSTemplatesViewEngine(templateData: ["name": "Slimane", "date": "\(Time())" as AnyObject]), path: "index.mustache")
+            let render = Render(engine: MustacheViewEngine(templateData: ["name": "Slimane"]), path: "index")
             return Response(custom: render)
         }
     }
@@ -119,6 +122,66 @@ func launchApplication(){
         responder {
             Response(body: "\(json)")
         }
+    }
+    
+    // fibonacci with QWFuture
+    app.get("/fibo") { req, responder in
+        func fibonacci(_ number: Int) -> (Int) {
+            if number <= 1 {
+                return number
+            } else {
+                return fibonacci(number - 1) + fibonacci(number - 2)
+            }
+        }
+        
+        let future = QWFuture<Int> { (completion: (() throws -> Int) -> ()) in
+            completion {
+                fibonacci(10)
+            }
+        }
+        
+        future.onSuccess { result in
+            responder {
+                Response(body: "result is \(result)")
+            }
+        }
+    }
+    
+    // Asynchronous flow controll with Promise
+    app.get("/flow_controll") { req, responder in
+        let p1 = Promise<Response> { resolve, reject in
+            do {
+                let request = Request(method: .get, uri: URI(scheme: "http", host: "google.com", path: "/"))
+                try _ = Hanger(request: request) {
+                    let response = try! $0()
+                    resolve(response)
+                }
+            } catch {
+                reject(error)
+            }
+        }
+        
+        let p2 = Promise<Response> { resolve, reject in
+            do {
+                let request = Request(method: .get, uri: URI(scheme: "http", host: "google.com", path: "/"))
+                try _ = Hanger(request: request) {
+                    let response = try! $0()
+                    resolve(response)
+                }
+            } catch {
+                reject(error)
+            }
+        }
+
+        Thrush.all(promises: [p1, p2]).then { responses in
+                responder {
+                    Response(body: "\(responses)")
+                }
+            }.failure { error in
+                responder {
+                    Response(status: .badRequest, body: "\(error)")
+                }
+            }
     }
 
     // for making sure the worker round robin on cluster mode.
