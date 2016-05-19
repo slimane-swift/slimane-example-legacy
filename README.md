@@ -8,13 +8,13 @@ Check out the [Slimane Documentation](https://github.com/noppoMan/Slimane/wiki) 
 
 ## How to build and run
 ```swift
-make
+make debug
 
 // Launch Single app
-.build/release/SlimaneExample
+.build/debug/SlimaneExample
 
 // Launch Cluster app
-.build/release/SlimaneExample --cluster
+.build/debug/SlimaneExample --cluster
 ```
 
 ## License
