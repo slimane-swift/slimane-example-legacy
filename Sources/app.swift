@@ -195,16 +195,8 @@ func launchApplication(){
     
     // html render with MustacheViewEngine
     app.get("/chat", handler: ChatRoute.index)
-    
-    app.any { req, res, stream in
-        switch req.uri.path! {
-        case "/wschat":
-            ChatRoute.websocketHandler(req: req, res: res, stream: stream)
-        default:
-            var res = app.errorHandler(Error.RouteNotFound(path: req.uri.path ?? "/"))
-            try! stream.send((res.description+"\r\n").data + res.body.becomeBuffer())
-        }
-    }
+
+    app.get("/wschat", handler: ChatRoute.websocketHandler)
 
     let text = "Listening slimane http server at \(host):\(port)"
     if Cluster.isMaster {

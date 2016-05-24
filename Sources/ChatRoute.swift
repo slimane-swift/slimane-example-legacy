@@ -46,39 +46,46 @@ extension WebSocket {
 }
 
 struct ChatRoute {
-    static func index(to: Request, responder: ((Void) throws -> Response) -> Void){
+    static func index(to request: Request, responder: ((Void) throws -> Response) -> Void){
         responder {
             let render = Render(engine: MustacheViewEngine(templateData: ["host": host, "port": "\(port)"]), path: "chat")
             return Response(custom: render)
         }
     }
     
-    static func websocketHandler(req: Request, res: Response, stream: AsyncStream){
-        _ = WebSocketServer(to: req, with: stream) {
-            do {
-                let socket = try $0()
-                // retain strong ref
-                let unmanaged = socket.unmanaged()
-                
-                socket.onClose { status, _ in
-                    print("closed")
-                    socket.release(unmanaged)
+    static func websocketHandler(to request: Request, responder: ((Void) throws -> Response) -> Void){
+        responder {
+            var response = Response()
+            response.body = .asyncSender({ stream, _ in
+                _ = WebSocketServer(to: request, with: stream) {
+                    do {
+                        let socket = try $0()
+                        // retain strong ref
+                        let unmanaged = socket.unmanaged()
+                        
+                        socket.onClose { status, _ in
+                            print("closed")
+                            socket.release(unmanaged)
+                        }
+                        
+                        socket.onText { [unowned socket] in
+                            socket.broadCast($0)
+                        }
+                        
+                        socket.onBinary { [unowned socket] in
+                            socket.broadCast($0)
+                        }
+                        
+                        socket.onPing { [unowned socket] in
+                            socket.pong($0)
+                        }
+                    } catch {
+                        stream.send(Response(status: .badRequest, body: "\(error)").description+"\r\n".data) {_ in }
+                    }
                 }
-                
-                socket.onText { [unowned socket] in
-                    socket.broadCast($0)
-                }
-                
-                socket.onBinary { [unowned socket] in
-                    socket.broadCast($0)
-                }
-                
-                socket.onPing { [unowned socket] in
-                    socket.pong($0)
-                }
-            } catch {
-                stream.send(Response(status: .badRequest, body: "\(error)").description+"\r\n".data) {_ in }
-            }
+            })
+            
+            return response
         }
     }
 }
